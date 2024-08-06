@@ -1,0 +1,102 @@
+<!-- <table>
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Quantidade de Inscritos</th>
+    <th>Ações</th>
+  </tr>
+  <tr *ngFor="let canal of canais">
+    <td>
+      <input *ngIf="canal.editing" [(ngModel)]="canal.nome" />
+      <span *ngIf="!canal.editing">{{ canal.nome }}</span>
+    </td>
+    <td>
+      <input *ngIf="canal.editing" [(ngModel)]="canal.descricao" />
+      <span *ngIf="!canal.editing">{{ canal.descricao }}</span>
+    </td>
+    <td>
+      <input *ngIf="canal.editing" type="number" [(ngModel)]="canal.quantidadeInscritos" />
+      <span *ngIf="!canal.editing">{{ canal.quantidadeInscritos }}</span>
+    </td>
+    <td>
+      <button *ngIf="canal.editing" (click)="saveCanal(canal)">Salvar</button>
+      <button *ngIf="canal.editing" (click)="cancelEdit(canal)">Cancelar</button>
+      <button *ngIf="!canal.editing" (click)="editCanal(canal)">Editar</button>
+      <button *ngIf="!canal.editing" (click)="deleteCanal(canal.id)">Excluir</button>
+    </td>
+  </tr>
+</table>
+
+<button (click)="addCanal()">Adicionar Novo Canal</button> -->
+
+
+<div class="container">
+
+  <!-- Campos de adição -->
+  <div *ngIf="isAdding" class="add-form">
+    <label for="newNome" class="form-label">Nome:</label>
+    <input id="newNome" [(ngModel)]="newCanal.nome" name="newNome" class="form-input" required>
+
+    <label for="newDescricao" class="form-label">Descrição:</label>
+    <input id="newDescricao" [(ngModel)]="newCanal.descricao" name="newDescricao" class="form-input" required>
+
+    <label for="newQuantidadeInscritos" class="form-label">Quantidade de Inscritos:</label>
+    <input id="newQuantidadeInscritos" type="number" [(ngModel)]="newCanal.quantidadeInscritos" name="newQuantidadeInscritos" class="form-input" required>
+
+    <button class="btn btn-add" (click)="addNewCanal()">Adicionar</button>
+    <button class="btn btn-cancel" (click)="cancelAdd()">Cancelar</button>
+  </div>
+
+  <button *ngIf="!isAdding" class="btn btn-add-new" (click)="startAdd()">Adicionar Novo Canal</button>
+
+  <!-- Campos de Filtro -->
+  <div class="filter-container">
+    <label for="filterNome" class="filter-label">Nome:</label>
+    <input id="filterNome" [(ngModel)]="filter.nome" name="filterNome" class="filter-input">
+
+    <label for="filterDescricao" class="filter-label">Descrição:</label>
+    <input id="filterDescricao" [(ngModel)]="filter.descricao" name="filterDescricao" class="filter-input">
+
+    <label for="filterQuantidadeInscritos" class="filter-label">Quantidade de Inscritos:</label>
+    <input id="filterQuantidadeInscritos" type="number" [(ngModel)]="filter.quantidadeInscritos" name="filterQuantidadeInscritos" class="filter-input">
+
+    <button class="btn btn-search" (click)="applyFilter()">Buscar</button>
+  </div>
+
+  <!-- Tabela de Canais -->
+  <table class="canal-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Quantidade de Inscritos</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let canal of canais">
+        <td>
+          <input *ngIf="canal.editing" [(ngModel)]="canal.nome" class="edit-input"/>
+          <span *ngIf="!canal.editing">{{ canal.nome }}</span>
+        </td>
+        <td>
+          <input *ngIf="canal.editing" [(ngModel)]="canal.descricao" class="edit-input"/>
+          <span *ngIf="!canal.editing">{{ canal.descricao }}</span>
+        </td>
+        <td>
+          <input *ngIf="canal.editing" type="number" [(ngModel)]="canal.quantidadeInscritos" class="edit-input"/>
+          <span *ngIf="!canal.editing">{{ canal.quantidadeInscritos }}</span>
+        </td>
+        <td>
+          <button *ngIf="canal.editing" class="btn btn-save" (click)="saveCanal(canal)">Salvar</button>
+          <button *ngIf="canal.editing" class="btn btn-cancel" (click)="cancelEdit(canal)">Cancelar</button>
+          <button *ngIf="!canal.editing" class="btn btn-edit" (click)="editCanal(canal)">Editar</button>
+          <button *ngIf="!canal.editing" class="btn btn-delete" (click)="deleteCanal(canal.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+

@@ -1,0 +1,13 @@
+<form (ngSubmit)="save()">
+  <label for="nome">Nome:</label>
+  <input id="nome" [(ngModel)]="canal.nome" name="nome" required>
+
+  <label for="descricao">Descrição:</label>
+  <input id="descricao" [(ngModel)]="canal.descricao" name="descricao" required>
+
+  <label for="quantidadeInscritos">Quantidade de Inscritos:</label>
+  <input id="quantidadeInscritos" type="number" [(ngModel)]="canal.quantidadeInscritos" name="quantidadeInscritos" required>
+
+  <button type="submit">{{ isEditMode ? 'Atualizar' : 'Adicionar' }}</button>
+  <button (click)="cancel()">Cancelar</button>
+</form>
